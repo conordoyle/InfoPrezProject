@@ -9,6 +9,7 @@
 <body>
 
 <h1>Can BlueBike Data Reveal Inefficencies?</h1>
+<h4>By Heidi Eren, Cameron Burke, Conor Doyle</h4>
 
 <h3>Overall Introduction</h3>
 
@@ -46,14 +47,22 @@
 
 </p>
 
-<h3>Introduction to the data</h3>
+<h3>Introduction to the Data</h3>
 
-<p> Our analysis makes use of two datasets. the first data is
-    a data set called `us_statewide_crime.csv` which contains
-    the following crime statistics for all US states and the
-    District of Columbia in 2010. The data has 50 rows with 9
-    features. The detail information about the features are listed
-    in the following table:</p>
+<p> From Bluebike, we make use of two datasets: ‘current_bluebike_stations.csv’ that contains the name, latitude,
+    longitude, district, and number of docking stations for every Bluebike station (421 rows by 7 columns) and
+    ‘202301-bluebikes-tripdata.csv’ (140340 rows by 14 columns) that contains the comprehensive trip histories including
+    the start/stop time, trip duration, start/end station name and location, and usertype.
+</p>
+
+<p>From Mass.gov, we make use of four additional datasets, two per type of transportation. For bus data, we utilized
+    ‘MBTABUSROUTES_ARC.shp’ for bus route description and length (linestring for geopandas) and ‘MBTABUSSTOPS_PT.shp’
+    for bus stop name, district, and location (point for geopandas). For train data, we utilized ‘MBTA_ARC.shp’ for
+    train line, route, and length (linestring) and ‘MBTA_NODE.shp’ for train station, line, route, and location (point).
+</p>
+
+<p>The features for the Bluebike datasets are previewed in the following table:
+</p>
 
 <div class="center">
 
@@ -157,30 +166,40 @@
     </table>
 </div>
 
-
-<p>Meanwhile, we also believe that the geographical
-    information is important when evaluating the unemployment
-    rate. Therefore, we also make use of geographical information
-    on <a href="https://www.naturalearthdata.com/downloads/">Natural Earth</a>.
-    The website provides the geographical information for making maps for US states.
-</p>
-
-<p>To make a better data visualization, we remove the Alaska and Hawaii
-    from the data. Following is an interactive map for the
-    lower 48 states in US. User can zoom in the map. The color
-    indicates the unemployment rate for each state. When click any
-    state, other social factors will be revealed for the state. </p>
+<h3>Interactive Visualization for our Overall Data</h3>
 
 <div class='center'>
-    <iframe src="map.html" width="80%" height="400px" frameborder="0"></iframe>
+    <iframe src="folium_map.html" width="80%" height="400px" frameborder="0"></iframe>
 </div>
 
-<p>In general, west coast states tend to have higher
-    unemployment rate. On the east coast, West virginia
-    and New York state tend to have higher unemplyment rate
-    than the others. In the south, Mississippi and Louisiana
-    are the ones with the much higher unemplyment rate.
+<p>To compile and overlay data from both Bluebike and MBTA, we created an interactive Folium map that visualizes
+    the coordinates and routes for the various modes of transportation. The various layers can be toggled on or
+    off in the top right hand corner. The blue points represent the start bike trip locations (indicating the
+    blue bike station used), which a user can hover and learn more regarding the bike station name and frequency.
+    The MBTA lines are featured as routes in their respective colors (Red line is red, etc). The bus icons represent
+    the MBTA bus stops that are color coordinated by district name. The bus routes are also shown as lines along
+    the bus stops. By examining the proximity of Bluebike trips with respect to MBTA bus and train stations,
+    the map can geographically portray which MBTA transit routes should be addressed or which routes should be
+    implemented.
+
 </p>
+
+<h3>Looking at BlueBike Data for Different District</h3>
+
+<p>
+    We can see from our BlueBike data that there is data from many different districts in Massachusetts, not just
+    Boston. We can't do analysis on all the districts, since the data is geographically spread out, which will make
+    visualizations difficult to understand. We need to choose a district or two to really focus on, so we can get a
+    clear understanding of what the data is telling us. To determine which district to choose, we plotted out the total
+    number of docking stations in each district that was included in our BlueBike data. Frrom the bar plot below, we can
+    see that Boston and Cambridge are the two areas with the most BlueBike docks. Therefore, we choose these areas to
+    focus on because they are geographically close together, and they are relevant for our analysis because of how
+    popular BlueBikes are in these areas.
+</p>
+
+<div class='center'>
+    <img src="static_plots/district_docks.png" width="200%" height="600px" frameborder="0"></img>
+</div>
 
 <h3>Understanding Popular BlueBike Routes</h3>
 
@@ -237,19 +256,6 @@
     <iframe src="AltairPlot.html" width="85%" height="550px" frameborder="0"></iframe>
 </div>
 
-<h3>Compare MA to the other states</h3>
-
-<p>
-    Since we are in MA, thus we want to take a closer look between
-    MA and other states. We create the following interactive plot
-    such that user can choose another state to compare with MA and
-    show the bar plot on each factors.
-</p>
-
-<div class='center'>
-    <iframe src="summary.html" width="95%" height="300px" frameborder="0"></iframe>
-</div>
-
 <h3>Summary and additional work</h3>
 
 <p>
@@ -264,10 +270,35 @@
     will be more informative.
 </p>
 
-<p>If you are interested in the project and want to share more
-    opinions or resource about the project, please contact:
-    Xiaoyi Yang (xiaoy.yang@northeastern.edu)
+<p>
+    We learned from the data visualizations that the following BlueBike docking stations are the most popular:
+<ul>
+    <li>MIT at Mass Ave/Amherst St</li>
+    <li>MIT at Mass Ave/Amherst St</li>
+    <li>MIT Vassar St</li>
+</ul>
+Therefore, the MBTA should look to either expand routes to these areas, or improve upon already existing transit in
+these areas.
 </p>
+
+<p>
+    Additionally, we learned that the above popular BlueBike docking stations have these closest public transit
+    stations:
+<ul>
+    <li>Mass Ave @ Memorial Dr, Pearl St, Amesbury @ Vassar St (bus)</li>
+    <li>Kendall/MIT, Central on Red line (train)</li>
+    <li>BU East on Green line (train)</li>
+</ul>
+Therefore, the MBTA should check to see if there is something wrong with these stations, because near these transit
+stations, people are choosing to take BlueBikes
+</p>
+<p>
+    We are happy with our findings and we worked hard to produce the visualizations. In the future, we think a good path
+    for this project would be to package all of our analysis and visualizations into an algorithm that can be applied to
+    any city in the world. As long as a user has bike data and transit data similar to what we have, they could use this
+    algorithm to generate analysis on their own city.
+</p>
+
 
 </body>
 </html>
