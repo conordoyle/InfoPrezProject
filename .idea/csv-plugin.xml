@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="$USER_HOME$/Downloads/submission 2/us_statewide_crime.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/datasets/202301-bluebikes-tripdata.csv">
           <value>
             <Attribute>
