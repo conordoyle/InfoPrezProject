@@ -116,7 +116,7 @@
 <h3>Interactive Visualization for our Overall Data</h3>
 
 <div class='center'>
-    <iframe src="map.html" width="80%" height="400px" frameborder="0"></iframe>
+    <iframe src="folium_map.html" width="80%" height="400px" frameborder="0"></iframe>
 </div>
 
 <p>In general, west coast states tend to have higher
@@ -125,6 +125,23 @@
     than the others. In the south, Mississippi and Louisiana
     are the ones with the much higher unemplyment rate.
 </p>
+
+<h3>Looking at BlueBike Data for Different District</h3>
+
+<p>
+    We can see from our BlueBike data that there is data from many different districts in Massachusetts, not just
+    Boston. We can't do analysis on all the districts, since the data is geographically spread out, which will make
+    visualizations difficult to understand. We need to choose a district or two to really focus on, so we can get a
+    clear understanding of what the data is telling us. To determine which district to choose, we plotted out the total
+    number of docking stations in each district that was included in our BlueBike data. Frrom the bar plot below, we can
+    see that Boston and Cambridge are the two areas with the most BlueBike docks. Therefore, we choose these areas to
+    focus on because they are geographically close together, and they are relevant for our analysis because of how
+    popular BlueBikes are in these areas.
+</p>
+
+<div class='center'>
+    <img src="static_plots/district_docks.png" width="200%" height="600px" frameborder="0"></img>
+</div>
 
 <h3>Understanding Popular BlueBike Routes</h3>
 
@@ -179,19 +196,6 @@
 
 <div class='center'>
     <iframe src="AltairPlot.html" width="85%" height="550px" frameborder="0"></iframe>
-</div>
-
-<h3>Compare MA to the other states</h3>
-
-<p>
-    Since we are in MA, thus we want to take a closer look between
-    MA and other states. We create the following interactive plot
-    such that user can choose another state to compare with MA and
-    show the bar plot on each factors.
-</p>
-
-<div class='center'>
-    <iframe src="summary.html" width="95%" height="300px" frameborder="0"></iframe>
 </div>
 
 <h3>Summary and additional work</h3>
